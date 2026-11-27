@@ -1,0 +1,815 @@
+<title>Guilhem Chancelier ePortfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="ePortfolio de Guilhem Chancelier, élève ingénieur à l'ENSEEIHT (MF2E, Eau et environnement).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF; --wash:#F2F8F9; --leafwash:#F3F7EF; --ink:#22342F; --muted:#5B6E69; --line:#E1EAE8;
+  --river:#1D7FA0; --river-dark:#155F78; --leaf:#4C8A3A; --sun:#E9A23B;
+  --sky1:#E8F4F8; --sky2:#F7FBFC;
+  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem; --s6:2rem; --s7:3.25rem; --s8:5rem;
+  --r:14px; --maxw:70rem;
+  --shadow:0 1px 2px rgba(34,52,47,.05),0 8px 24px rgba(29,127,160,.07);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 1.02rem/1.7 var(--f-body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(255,255,255,.92)}
+a{color:var(--river);text-underline-offset:3px}
+a:hover{color:var(--river-dark)}
+:focus-visible{outline:3px solid var(--river);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0;color:var(--ink)}
+h2{font-size:clamp(2rem,4.2vw,2.8rem);font-weight:500}
+h3{font-size:clamp(1.45rem,2.6vw,1.75rem);font-weight:500}
+h4{font-size:1.2rem}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.label{font-size:.9rem;color:var(--muted)}
+.kicker{font-size:1rem;color:var(--leaf);font-weight:600}
+.mono{font-family:var(--f-body);font-variant-numeric:tabular-nums}
+.lead{font-size:1.14rem;color:var(--muted);max-width:62ch}
+.prose{max-width:66ch;display:grid;gap:var(--s3)}
+.skip{position:absolute;left:-999px;top:0;background:var(--river);color:#fff;padding:var(--s3);z-index:100}
+.skip:focus{left:var(--s4)}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+
+/* Views */
+main{padding-block:var(--s6) var(--s8)}
+.view{display:grid;gap:var(--s8)}
+.view-head{display:grid;gap:var(--s3);padding-top:var(--s5)}
+section.block{display:grid;gap:var(--s5)}
+.block-head{display:grid;gap:var(--s2)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 100%);border:1px solid var(--line)}
+.hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:var(--s6);padding:clamp(2rem,5vw,4.5rem) clamp(1.25rem,5vw,4rem)}
+@media (max-width:820px){.hero-inner{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:500;letter-spacing:-.01em;margin-top:var(--s2)}
+.hero h1 em{font-style:italic;color:var(--river)}
+.hero .lead{margin-top:var(--s4);color:#4A5E59}
+.target{margin-top:var(--s5);padding:var(--s4) var(--s5);background:rgba(255,255,255,.9);border-radius:var(--r);display:grid;gap:4px;max-width:56ch;box-shadow:var(--shadow);border:1px solid var(--line)}
+.target .label{color:var(--leaf);font-weight:600}
+.target strong{font:600 1.25rem/1.3 var(--f-display)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:700 .95rem var(--f-body);text-decoration:none;padding:.75rem 1.25rem;border-radius:999px;border:1.5px solid var(--river);color:var(--river);background:#fff;cursor:pointer}
+.btn.primary{background:var(--river);color:#fff}
+.btn.primary:hover{background:var(--river-dark);color:#fff}
+.btn[aria-disabled="true"]{border-color:var(--line);color:var(--muted);cursor:default}
+.portrait{align-self:center;justify-self:center;width:min(100%,19rem);aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 24px 24px;background:rgba(255,255,255,.7);border:1px dashed var(--line);display:grid;place-items:center;text-align:center;padding:var(--s4);color:var(--muted);box-shadow:var(--shadow);overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait .label br{display:none}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s5)}
+@media (max-width:820px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.facts{grid-template-columns:1fr}}
+.fact{display:grid;gap:2px;align-content:start}
+.fact .label{color:var(--leaf);font-weight:600}
+.fact b{font:600 1.15rem/1.35 var(--f-display)}
+.contact{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s6);align-items:center}
+.copy{font:600 .8rem var(--f-body);border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:.2rem .7rem;cursor:pointer;margin-left:.5rem}
+
+/* Grids and cards */
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--wash);border-radius:var(--r);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card .meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);align-items:baseline;justify-content:space-between}
+.chip{font-size:.85rem;font-weight:700;white-space:nowrap}
+.chip.done{color:var(--leaf)}
+.chip.plan{color:var(--river)}
+.chip.talk{color:#B9761C}
+.chip.prep{color:var(--muted);font-weight:600}
+.chip.no{color:var(--muted)}
+ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:var(--s2)}
+ul.ticks{padding-left:1.15rem;margin:0;display:grid;gap:var(--s1)}
+ul.ticks li::marker{color:var(--leaf)}
+
+.subnav{display:flex;gap:var(--s2) var(--s4);flex-wrap:wrap}
+.subnav a{font-weight:600;font-size:.95rem}
+
+/* Career plans */
+.plan-tag{font-weight:700;font-size:.9rem}
+.plan-a .plan-tag{color:var(--river)}
+.plan-b .plan-tag{color:var(--leaf)}
+.plan-c .plan-tag{color:#B9761C}
+.plan-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.plan-card.plan-a{background:var(--wash);border-color:transparent}
+.ruled-out{display:block;padding:var(--s4) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--muted)}
+.ruled-out .chip{color:var(--muted)}
+.roadmap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line)}
+.rm{min-width:760px;display:grid;grid-template-columns:11rem repeat(4,minmax(0,1fr))}
+.rm > div{padding:var(--s3) var(--s4);border-bottom:1px solid var(--line)}
+.rm .h{background:var(--leafwash);font-weight:700;color:var(--ink);font-size:.9rem}
+.rm .plan-name{display:grid;gap:2px;align-content:start}
+.rm .plan-name b{font:600 1.05rem/1.25 var(--f-display)}
+.rm .step{font-size:.95rem}
+.rm .row-a{background:var(--wash)}
+.rm .last{border-bottom:0}
+
+/* Interviews */
+.iv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s4);align-items:start}
+.avatar{width:3.2rem;height:3.2rem;border-radius:50%;display:grid;place-items:center;font:600 1.1rem var(--f-display);background:#fff;color:var(--river)}
+
+/* Tables */
+.table-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:.8rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;font-size:.9rem;color:var(--ink);background:var(--leafwash)}
+tr:last-child td{border-bottom:0}
+
+/* Timeline */
+.timeline{display:grid;border-left:2px solid #CFE3E8;margin-left:.45rem}
+.tl{position:relative;padding:0 0 var(--s6) var(--s5);display:grid;gap:2px}
+.tl::before{content:"";position:absolute;left:-.5rem;top:.45rem;width:.85rem;height:.85rem;border-radius:50%;background:#fff;border:2px solid #9FC4CF}
+.tl.future::before{border-color:var(--river);background:var(--river)}
+.tl.now::before{border-color:var(--leaf);background:var(--leaf)}
+.tl:last-child{padding-bottom:0}
+.tl .when{font-size:.9rem;font-weight:700;color:var(--leaf)}
+.tl.future .when{color:var(--river)}
+.tl p{color:var(--muted);max-width:64ch}
+
+/* Trackers */
+.tracker{display:grid;gap:var(--s4)}
+.meter{height:12px;border-radius:999px;background:#fff;overflow:hidden;display:flex}
+.meter i{display:block;height:100%;border-radius:999px}
+.legend{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);font-size:.92rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:.45rem}
+.legend span::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--c)}
+.big{font:500 clamp(2.2rem,5vw,3.2rem)/1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--ink)}
+.stat{display:grid;gap:var(--s2)}
+.carbon{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--s6);align-items:center}
+@media (max-width:760px){.carbon{grid-template-columns:1fr}}
+.formula{font-size:.95rem;line-height:1.8;background:#fff;border-radius:10px;padding:var(--s4) var(--s5);overflow-x:auto;white-space:pre-line;color:var(--ink)}
+
+.sdg{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.sdg span{font-size:.82rem;font-weight:700;padding:.25rem .7rem;border-radius:999px;background:#fff;color:var(--leaf)}
+
+.sport{display:grid;gap:var(--s3);align-content:start}
+.sport .badge{font-size:.88rem;font-weight:700;color:var(--leaf)}
+
+/* Portfolio */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,16rem),1fr));gap:var(--s5)}
+.shot{margin:0;display:grid;gap:var(--s2)}
+.shot .frame{aspect-ratio:4/3;max-width:100%;border-radius:var(--r);overflow:hidden;background:var(--wash);border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.85rem}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot figcaption{display:grid;gap:0;padding-inline:2px}
+.shot figcaption b{font:600 1.05rem var(--f-display)}
+.filters{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.filters button{font:600 .9rem var(--f-body);border:1px solid var(--line);background:#fff;color:var(--ink);padding:.45rem .95rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--river);color:#fff;border-color:var(--river)}
+
+footer{background:var(--leafwash)}
+footer .wrap{padding-block:var(--s6);display:flex;flex-wrap:wrap;gap:var(--s3) var(--s6);justify-content:space-between;align-items:center;color:var(--muted);font-size:.92rem}
+</style>
+<style>sup{font-size:.7em;line-height:0}@media (max-width:640px){#pitch-card{grid-template-columns:1fr!important}}</style>
+
+<style>
+/* Photos */
+.brand{flex-direction:row;align-items:center;gap:.85rem}
+.brand-logo{height:40px;width:auto;display:block;border-radius:3px}
+.brand-text{display:flex;flex-direction:column}
+
+/* En-tête : identité au-dessus, onglets en dessous (ordinateur) ; tiroir (mobile) */
+html{scroll-padding-top:120px}
+.bar{display:flex;flex-direction:column;align-items:stretch}
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);min-height:64px}
+.brand{display:flex;flex-direction:row;align-items:center;gap:.85rem;text-decoration:none;color:var(--ink);min-width:0}
+.brand-logo{height:40px;width:auto;display:block;border-radius:3px;flex:none}
+.brand-text{display:flex;flex-direction:column;min-width:0}
+.brand b{font:600 1.3rem/1.1 var(--f-display)}
+.brand-text span{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+nav.main{display:flex;justify-content:space-between;gap:var(--s2);border-top:1px solid var(--line)}
+nav.main a{font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;padding:.65rem .2rem;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px}
+nav.main a:hover{color:var(--ink)}
+nav.main a[aria-current="page"]{color:var(--river);border-bottom-color:var(--river)}
+.menu-btn{display:none;font:600 .95rem var(--f-body);background:var(--wash);color:var(--ink);border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;flex:none}
+@media (max-width:960px){
+  html{scroll-padding-top:76px}
+  .menu-btn{display:inline-flex}
+  nav.main{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;box-shadow:var(--shadow);max-height:calc(100dvh - 68px);overflow-y:auto;padding:var(--s2) max(16px,env(safe-area-inset-right,0px)) var(--s3) max(16px,env(safe-area-inset-left,0px))}
+  nav.main.open{display:flex}
+  nav.main a{padding:.75rem .6rem;border-bottom:1px solid var(--line);margin:0;font-size:1rem;border-radius:6px}
+  nav.main a:last-child{border-bottom:0}
+  nav.main a[aria-current="page"]{border-bottom-color:var(--line);background:var(--wash)}
+}
+@media (max-width:560px){
+  .brand-logo{height:30px}
+  .brand-text span{display:none}
+  .brand b{font-size:1.1rem;white-space:nowrap}
+}
+@media (max-width:400px){
+  .brand{gap:.6rem}
+  .brand-logo{height:26px}
+  .brand b{font-size:1rem}
+}
+.portrait.has-photo{padding:0;border:0;background:none}
+.portrait.has-photo img{object-position:50% 35%}
+.intro-photo{margin:0;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);align-self:start}
+.intro-photo img{display:block;width:100%;height:100%;aspect-ratio:16/10;object-fit:cover}
+.intro-photo figcaption{padding:.6rem 1rem;font-size:.9rem;color:var(--muted);background:#fff}
+
+.eng-list{display:grid;gap:var(--s5)}
+.eng{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--s6);align-items:center}
+.eng .body{display:grid;gap:var(--s3);align-content:start}
+.eng .media{margin:0;border-radius:10px;aspect-ratio:auto}
+.eng .media img{height:auto}
+.eng .media.logo{background:#fff;padding:var(--s4)}
+.eng .media.logo img{padding:0}
+.eng.tall{grid-template-columns:minmax(0,1fr) minmax(0,13rem);align-items:center}
+.eng.tall .media{aspect-ratio:3/4}
+.eng.tall .media img{height:100%}
+@media (max-width:720px){.eng,.eng.tall{grid-template-columns:1fr}.eng .media{order:-1}.eng.tall .media{aspect-ratio:4/3}}
+
+.sport-list{display:grid;gap:var(--s5)}
+.sport.framed{grid-template-columns:minmax(0,11rem) minmax(0,1fr) minmax(0,11rem);gap:var(--s6);align-items:center}
+.sport.framed .body{display:grid;gap:var(--s3);max-width:60ch;justify-self:center}
+.sport.framed .side.logo{object-fit:contain;background:#fff;padding:10%}
+.sport.framed .side{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;display:block}
+@media (max-width:720px){
+  .sport.framed{grid-template-columns:1fr 1fr;gap:var(--s3) var(--s3)}
+  .sport.framed .body{grid-column:1 / -1;order:3}
+  .sport.framed .side{aspect-ratio:1/1}
+}
+
+.ctl{position:relative;display:grid;gap:var(--s6)}
+.ctl::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:#CFE3E8}
+.ctl-item{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 3rem minmax(0,1fr);align-items:center}
+.ctl-item .ctl-dot{grid-column:2;grid-row:1;justify-self:center;width:1rem;height:1rem;border-radius:50%;background:#fff;border:2px solid #9FC4CF;z-index:1}
+.ctl-item.future .ctl-dot{background:var(--river);border-color:var(--river)}
+.ctl-item.now .ctl-dot{background:var(--leaf);border-color:var(--leaf)}
+.ctl-text{display:grid;gap:2px}
+.ctl-text .when{font-size:.9rem;font-weight:700;color:var(--leaf)}
+.ctl-item.future .when{color:var(--river)}
+.ctl-text p{color:var(--muted)}
+.ctl-photo{margin:0;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);max-width:22rem}
+.ctl-photo img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.ctl-photo.empty{box-shadow:none}
+.ctl-photo figcaption{padding:.5rem .8rem;font-size:.82rem;color:var(--muted);background:#fff}
+.ctl-item.left .ctl-text{grid-column:1;grid-row:1;text-align:right}
+.ctl-item.left .ctl-photo{grid-column:3;grid-row:1;justify-self:start}
+.ctl-item.right .ctl-text{grid-column:3;grid-row:1}
+.ctl-item.right .ctl-photo{grid-column:1;grid-row:1;justify-self:end}
+@media (max-width:720px){
+  .ctl::before{left:.5rem}
+  .ctl-item{grid-template-columns:1rem minmax(0,1fr);column-gap:var(--s4);row-gap:var(--s3);align-items:start}
+  .ctl-item .ctl-dot{grid-column:1;grid-row:1;margin-top:.3rem}
+  .ctl-item.left .ctl-text,.ctl-item.right .ctl-text{grid-column:2;grid-row:1;text-align:left}
+  .ctl-item.left .ctl-photo,.ctl-item.right .ctl-photo{grid-column:2;grid-row:2;justify-self:start}
+  .ctl-photo.empty{display:none}
+}
+
+.gallery{display:block;columns:3 16rem;column-gap:var(--s5)}
+.shot{break-inside:avoid;margin:0 0 var(--s5);display:block}
+.shot .frame{aspect-ratio:auto;border:0;background:var(--wash)}
+.shot img{height:auto}
+.shot figcaption{padding-top:var(--s2)}
+.shot .sci{font-size:.9rem;color:var(--muted)}
+.intro-text{display:grid;gap:var(--s5);align-content:start}
+.media{margin:calc(-1*var(--s5)) calc(-1*var(--s5)) 0;border-radius:var(--r) var(--r) 0 0;overflow:hidden;background:#fff;aspect-ratio:4/3;max-width:none}
+.media img{display:block;width:100%;height:100%;object-fit:cover}
+.media.logo img{object-fit:contain;padding:12% 10%}
+.media.duo{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--wash)}
+.media.duo img{min-height:0}
+</style>
+<a class="skip" href="#content">Aller au contenu</a>
+
+<header>
+  <div class="wrap bar">
+    <div class="bar-top">
+    <a class="brand" href="#home"><img class="brand-logo" src="photos/logo-n7.png" alt="Toulouse INP · ENSEEIHT"><span class="brand-text"><b>Guilhem Chancelier</b><span>ENSEEIHT · MF2E · Eau et environnement</span></span></a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+    <nav class="main" id="nav" aria-label="Navigation principale">
+      <a href="#home" data-view="home">Home</a>
+      <a href="#engineering-courses" data-view="engineering-courses">Engineering Courses</a>
+      <a href="#career-development" data-view="career-development">Career Development</a>
+      <a href="#international-mobility" data-view="international-mobility">International Mobility</a>
+      <a href="#sustainability" data-view="sustainability">Sustainability &amp; Civic</a>
+      <a href="#sport-activities" data-view="sport-activities">Sport &amp; Activities</a>
+      <a href="#portfolio" data-view="portfolio">Portfolio</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content" class="wrap" lang="fr">
+
+<!-- ============ HOME ============ -->
+<div class="view" id="home" data-title="Home">
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="kicker">Élève ingénieur · Mécanique des fluides et environnement</p>
+        <h1>Concevoir l'énergie propre et <em>préserver l'eau.</em></h1>
+        <p class="lead">Élève en 1<sup>re</sup> année du cycle ingénieur (M1) à l'ENSEEIHT (Toulouse INP), dans le département Mécanique des fluides, énergétique et environnement (MF2E). Je veux mettre la mécanique des fluides au service d'une électricité propre et renouvelable, produite en préservant l'environnement.</p>
+        <div class="target">
+          <span class="label">Objectif professionnel</span>
+          <strong>Ingénieur en électrification responsable</strong>
+          <span style="color:var(--muted)">Produire une électricité renouvelable tout en préservant les milieux naturels.</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="#career-development">Découvrir mon projet professionnel</a>
+          <a class="btn" href="docs/cv-guilhem-chancelier-fr.pdf" target="_blank" rel="noopener">CV (français)</a>
+          <a class="btn" href="docs/cv-guilhem-chancelier-en.pdf" target="_blank" rel="noopener">CV (anglais)</a>
+        </div>
+      </div>
+      <div class="portrait has-photo" id="portrait"><img src="photos/portrait.jpg" alt="Guilhem Chancelier en randonnée dans les Pyrénées"></div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><span class="label">Option visée (3<sup>e</sup> année)</span><b>Eau et environnement</b></div>
+    <div class="fact"><span class="label">Stage visé</span><b>Jiro Kanto, Madagascar · 17 semaines</b></div>
+    <div class="fact"><span class="label">Expérience de terrain</span><b>Suivi de gorilles (Congo) · Suivi d'oiseaux (LPO)</b></div>
+    <div class="fact"><span class="label">Langues</span><b>Français (natif) · Anglais (B2) · Espagnol · Allemand</b></div>
+  </div>
+
+  <section class="block">
+    <div class="block-head"><h2>Un parcours entre sciences et terrain</h2></div>
+    <div class="grid2">
+      <div class="intro-text">
+        <div class="prose">
+        <p>J'ai grandi entre le littoral méditerranéen et les Pyrénées, et je me suis attaché très tôt aux milieux naturels. Depuis l'enfance, je participe aux suivis d'oiseaux de la LPO. J'ai aussi pris part à une mission de suivi de gorilles en République du Congo et travaillé plusieurs étés dans les champs.</p>
+        <p>Après trois ans de classes préparatoires scientifiques (PCSI/PC) au lycée Joffre de Montpellier, je suis entré à l'ENSEEIHT en 2025. En dehors des cours, je pratique la photographie animalière, la randonnée et la batterie, et je débute l'alpinisme.</p>
+      </div>
+        <div class="card">
+        <h4>Contact</h4>
+        <div class="contact">
+          <span><span class="mono" id="mail">guilhem.chancelier@etu.toulouse-inp.fr</span><button class="copy" data-copy="mail">Copier</button></span>
+          <a href="https://www.linkedin.com/in/guilhem-chancelier-279417383" target="_blank" rel="noopener">Profil LinkedIn ↗</a>
+        </div>
+      </div>
+      </div>
+      <figure class="intro-photo"><img src="photos/fleuve-drone.jpg" alt="Le fleuve Kouilou bordé de forêt tropicale, vu du ciel à Kakamoéka"><figcaption>Le Kouilou à Kakamoéka, République du Congo</figcaption></figure>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ENGINEERING COURSES ============ -->
+<div class="view" id="engineering-courses" data-title="Engineering Courses" hidden>
+  <div class="view-head">
+    <p class="kicker">ENSEEIHT · Toulouse INP · depuis 2025</p>
+    <h2>Engineering Courses</h2>
+    <p class="lead">Après les classes préparatoires, le département MF2E me forme à la mécanique des fluides, à la thermodynamique, à la mécanique des milieux continus et à l'ingénierie de l'environnement, avec les mathématiques qui vont avec. J'y suis aussi des cours d'anglais, d'espagnol et de management.</p>
+  </div>
+
+  <section class="block">
+    <div class="block-head"><h3>Compétences clés</h3></div>
+    <div class="grid2">
+      <article class="card"><h4>Mécanique des fluides et hydraulique</h4><p>Écoulements potentiels, à bas nombre de Reynolds, diphasiques, turbulents et couches limites. Hydraulique à surface libre et bilans intégraux appliqués aux réseaux et aux rivières.</p></article>
+      <article class="card"><h4>Calcul scientifique et méthodes numériques</h4><p>Logiciels de simulation en mécanique des fluides. Discrétisation des équations aux dérivées partielles (volumes finis, différences finies). Modélisation stochastique, statistiques et optimisation.</p></article>
+      <article class="card"><h4>Eau, environnement et climat</h4><p>Transferts de chaleur et de masse, écoulements en milieu poreux. Écohydraulique, érosion et transport sédimentaire. Analyse d'impacts climatiques à travers des projets.</p></article>
+      <article class="card"><h4>Mécanique des structures et instrumentation</h4><p>Calcul de structures, élasticité linéaire et ondes. Traitement du signal et automatique. Instrumentation et bancs d'essai en laboratoire.</p></article>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head"><h3>Projets techniques</h3></div>
+    <div class="grid3">
+      <article class="card">
+        <div class="meta"><span class="label">ENSEEIHT · 2026–2027</span><span class="chip talk">En cours</span></div>
+        <h4>El Niño : modélisation expérimentale</h4>
+        <p>Comprendre le phénomène El Niño et le reproduire par une expérience de laboratoire, pour mettre en évidence les mécanismes physiques qui couplent l'océan et l'atmosphère.</p>
+      </article>
+      <article class="card">
+        <div class="meta"><span class="label">TIPE · classe préparatoire · 2025</span><span class="chip done">Terminé</span></div>
+        <h4>Stockage thermique par matériaux à changement de phase</h4>
+        <p>Conception et test d'une petite cuve de stockage thermique remplie de matériaux à changement de phase, pour évaluer si ce type de stockage peut fonctionner en conditions réelles.</p>
+      </article>
+      <article class="card">
+        <div class="meta"><span class="label">TIPE · classe préparatoire</span><span class="chip done">Terminé</span></div>
+        <h4>Protection contre le rayonnement UV</h4>
+        <p>Projet de recherche sur une solution de protection contre les ultraviolets, dans le cadre de mon second TIPE.</p>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CAREER DEVELOPMENT ============ -->
+<div class="view" id="career-development" data-title="Career Development" hidden>
+  <div class="view-head">
+    <p class="kicker">Projet personnel et professionnel (PPP)</p>
+    <h2>Career Development</h2>
+    <p class="lead">Mon projet professionnel, construit selon une démarche de design thinking : trois trajectoires possibles, explorées grâce à des entretiens avec des professionnels, puis confrontées à mes cours, à mes stages et à ce qui compte pour moi.</p>
+    <nav class="subnav" aria-label="Dans cet onglet">
+      <a href="#ppp-plans">Trajectoires</a>
+      <a href="#ppp-roadmap">Feuille de route</a>
+      <a href="#ppp-video">Vidéo pitch</a>
+      <a href="#ppp-interviews">Entretiens</a>
+      <a href="#ppp-documents">Documents</a>
+      <a href="#ppp-experience">Expériences</a>
+    </nav>
+  </div>
+
+  <section class="block" id="ppp-plans">
+    <div class="block-head"><h3>Trois trajectoires possibles</h3></div>
+    <div class="grid3">
+      <article class="card plan-card plan-a">
+        <span class="plan-tag">Plan A · priorité</span>
+        <h4>Ingénieur en électrification responsable</h4>
+        <p>Produire une électricité propre et renouvelable en préservant l'environnement, par exemple sur des projets d'électrification de zones isolées.</p>
+        <ul class="ticks"><li>Entretien : Luc Chancelier, consultant en énergies renouvelables</li><li>Formation : spécialité de second semestre orientée énergies renouvelables et environnement</li><li>Stage visé : Jiro Kanto, Madagascar</li></ul>
+      </article>
+      <article class="card plan-card plan-b">
+        <span class="plan-tag">Plan B · recherche</span>
+        <h4>Recherche en climat, cours d'eau et océanographie</h4>
+        <p>Poursuivre vers la recherche sur le climat, les cours d'eau et l'océan, éventuellement par le master SOAC à Toulouse, puis une thèse.</p>
+        <ul class="ticks"><li>Projet : modélisation expérimentale d'El Niño</li><li>Formation envisagée : master SOAC (Sciences de l'océan, de l'atmosphère et du climat)</li></ul>
+      </article>
+      <article class="card plan-card plan-c">
+        <span class="plan-tag">Plan C · enseignement</span>
+        <h4>Professeur de mathématiques ou de physique</h4>
+        <p>Enseigner au lycée ou en classes préparatoires après le CAPES ou l'agrégation, ou à l'université après une thèse, éventuellement après une première carrière d'ingénieur.</p>
+        <ul class="ticks"><li>Entretien : Victor Chéoux-Damas, ingénieur devenu professeur de mathématiques</li><li>Prochaine étape : tutorat et cours particuliers cette année</li></ul>
+      </article>
+    </div>
+    <div class="ruled-out">
+      <strong class="chip no">Piste écartée :</strong>
+      <p><strong>L'ingénierie industrielle et aérospatiale.</strong> Mon entretien avec Philippe Chéoux-Damas, ingénieur chez Airbus spatial, m'a fait découvrir l'aspect industriel du métier d'ingénieur, mais ce n'est pas ce qui m'intéresse vraiment.</p>
+    </div>
+  </section>
+
+  <section class="block" id="ppp-roadmap">
+    <div class="block-head"><h3>Feuille de route sur 10 ans</h3></div>
+    <div class="roadmap" role="region" aria-label="Feuille de route par trajectoire" tabindex="0">
+      <div class="rm">
+        <div class="h label">Trajectoire</div><div class="h label">2026–2027 · M1</div><div class="h label">2027–2028 · M2</div><div class="h label">2028–2031</div><div class="h label">2031–2036</div>
+        <div class="plan-name plan-a row-a"><span class="plan-tag">Plan A</span><b>Électrification responsable</b></div>
+        <div class="step row-a">Spécialité de second semestre en énergies renouvelables · stage chez Jiro Kanto (Madagascar)</div>
+        <div class="step row-a">Stage de fin d'études dans la production d'électricité renouvelable</div>
+        <div class="step row-a">Ingénieur en bureau d'études ou chez un producteur d'énergie renouvelable</div>
+        <div class="step row-a">Chef de projet en énergies renouvelables, en France ou à l'international</div>
+        <div class="plan-name plan-b"><span class="plan-tag">Plan B</span><b>Climat, cours d'eau, océan</b></div>
+        <div class="step">Projet El Niño · prise de contact avec des laboratoires</div>
+        <div class="step">Master SOAC envisagé</div>
+        <div class="step">Thèse en climat ou océanographie</div>
+        <div class="step">Chercheur ou ingénieur de recherche</div>
+        <div class="plan-name plan-c last"><span class="plan-tag">Plan C</span><b>Enseignement</b></div>
+        <div class="step last">Tutorat et cours particuliers</div>
+        <div class="step last">Diplôme d'ingénieur (grade de master)</div>
+        <div class="step last">Préparation du CAPES ou de l'agrégation</div>
+        <div class="step last">Professeur, éventuellement après une première carrière d'ingénieur</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ppp-video">
+    <div class="block-head"><h3>Vidéo pitch</h3></div>
+    <div class="card" style="grid-template-columns:minmax(0,18rem) minmax(0,1fr);gap:var(--s6);align-items:center" id="pitch-card">
+      <video controls preload="metadata" playsinline poster="media/pitch-poster.jpg" style="width:100%;max-width:100%;aspect-ratio:9/16;border-radius:8px;background:#152220">
+        <source src="media/pitch-video.mp4" type="video/mp4">
+      </video>
+      <div class="prose">
+        <p>Qui je suis aujourd'hui, les expériences qui m'ont construit et l'ingénieur que je veux devenir. Vidéo en anglais.</p>
+        <p class="label">Structure : présent · passé · futur</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ppp-interviews">
+    <div class="block-head"><h3>Entretiens professionnels</h3></div>
+    <div class="grid3">
+      <article class="card iv"><div class="avatar">LC</div><div style="display:grid;gap:var(--s2)">
+        <h4>Luc Chancelier</h4><span class="label">Ingénieur, consultant en énergies renouvelables</span>
+        <p>Une carrière entre électrification rurale, solaire et éolien, en Afrique et dans l'océan Indien. Il m'a conforté dans mon plan A : les compétences techniques ouvrent la porte, mais la réussite d'un projet tient à l'adaptation au terrain et à son modèle économique.</p>
+      </div></article>
+      <article class="card iv"><div class="avatar">PC</div><div style="display:grid;gap:var(--s2)">
+        <h4>Philippe Chéoux-Damas</h4><span class="label">Ingénieur chez Airbus spatial · projets CO3D et Astrium</span>
+        <p>Ingénieur chez Airbus spatial, il a notamment travaillé sur les projets CO3D et Astrium. Grâce à lui, j'ai pu découvrir l'aspect plus industriel du métier d'ingénieur qu'il m'a décrit, mais ce n'est pas ce qui m'intéresse vraiment : c'est la piste que j'ai écartée.</p>
+      </div></article>
+      <article class="card iv"><div class="avatar">VC</div><div style="display:grid;gap:var(--s2)">
+        <h4>Victor Chéoux-Damas</h4><span class="label">Ingénieur Arts et Métiers devenu professeur de mathématiques</span>
+        <p>Après des débuts d'ingénieur, notamment au CNES, et une thèse commencée, il s'est tourné vers l'enseignement des mathématiques au collège. Ce qui l'a motivé : le rapport aux autres, la transmission des connaissances et des stimulations intellectuelles toujours nouvelles grâce aux élèves.</p>
+      </div></article>
+    </div>
+  </section>
+
+  <section class="block" id="ppp-documents">
+    <div class="block-head"><h3>Documents du PPP</h3></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Document</th><th>Langue</th><th>État</th></tr></thead>
+        <tbody>
+          <tr><td><a href="docs/cv-guilhem-chancelier-fr.pdf" target="_blank" rel="noopener">CV</a></td><td>Français</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="docs/cv-guilhem-chancelier-en.pdf" target="_blank" rel="noopener">CV</a></td><td>Anglais</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="https://www.elatos.fr/offre/ingenieur-hydroelectricite-f-h/" target="_blank" rel="noopener">Offre d'emploi (IED, ingénieur hydroélectricité)</a> et <a href="docs/lettre-motivation-guilhem-chancelier.pdf" target="_blank" rel="noopener">lettre de motivation</a></td><td>Français</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="docs/comptes-rendus-entretiens.pdf" target="_blank" rel="noopener">Comptes rendus d'entretiens (3)</a></td><td>Français</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="#ppp-video">Vidéo pitch</a> (présent, passé, futur)</td><td>Anglais</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="docs/analyse-secteur.pdf" target="_blank" rel="noopener">Analyse du secteur (électricité renouvelable)</a></td><td>Français</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="docs/presentation-ppp.pdf" target="_blank" rel="noopener">Support de soutenance du PPP</a></td><td>Français</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td><a href="https://www.linkedin.com/in/guilhem-chancelier-279417383" target="_blank" rel="noopener">Profil LinkedIn</a></td><td>Français</td><td><span class="chip done">Disponible</span></td></tr>
+          <tr><td>Feuille de route de mobilité et bilan carbone</td><td>Français</td><td><a href="#international-mobility">Voir International Mobility</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" id="ppp-experience">
+    <div class="block-head"><h3>Expériences</h3></div>
+    <div class="timeline">
+      <div class="tl future"><span class="when">2027 · 17 semaines · en discussion</span><h4>Stage · Jiro Kanto (groupe IED), lac Alaotra, Madagascar</h4><p>Entreprise d'électrification rurale qui exploite un mini-réseau alimenté par deux petites centrales hydroélectriques (1 600 kW et 700 kW). Plus de 300 km de lignes moyenne et basse tension y sont en cours de réhabilitation.</p></div>
+      <div class="tl"><span class="when">Été 2026 · 2 mois</span><h4>Ouvrier agricole saisonnier · Villeveyrac (34)</h4><p>Récolte et entretien de cultures. Un travail physique en extérieur qui m'a montré concrètement comment est produite notre alimentation.</p></div>
+      <div class="tl"><span class="when">2022</span><h4>Stage de terrain · Endangered Species International, République du Congo</h4><p>Observation de gorilles des plaines de l'Ouest en forêt tropicale secondaire et collecte de données sur la biodiversité, dans des conditions exigeantes.</p></div>
+      <div class="tl"><span class="when">2021</span><h4>Stage découverte · Biotope, Mèze (34)</h4><p>Découverte du métier d'ingénieur écologue dans un bureau d'études environnementales.</p></div>
+      <div class="tl"><span class="when">2018</span><h4>Stage de 3<sup>e</sup> · centre de soins de la faune sauvage de la LPO (34)</h4><p>Soins et nourrissage d'animaux sauvages blessés : fous de Bassan, hérissons, corvidés, pigeons.</p></div>
+      <div class="tl"><span class="when">Été 2018 · 1 mois</span><h4>Ouvrier agricole saisonnier · castration du maïs, Aydie (64)</h4><p>De longues journées répétitives dans les champs, qui m'ont appris la persévérance et le travail d'équipe.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ INTERNATIONAL MOBILITY ============ -->
+<div class="view" id="international-mobility" data-title="International Mobility" hidden>
+  <div class="view-head">
+    <p class="kicker">Exigence ENSEEIHT · 17 semaines à l'étranger · 6 t CO₂e maximum</p>
+    <h2>International Mobility</h2>
+    <p class="lead">Les voyages ont nourri ma curiosité pour d'autres cultures bien avant l'école d'ingénieur. À l'ENSEEIHT, je privilégie un seul séjour long et utile plutôt que plusieurs voyages courts, pour limiter mon empreinte carbone.</p>
+  </div>
+
+  <section class="block">
+    <div class="block-head"><h3>Semaines à l'étranger pendant mes études</h3></div>
+    <div class="card tracker">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--s6);align-items:end">
+        <div class="stat"><span class="label">Réalisées</span><span class="big">0 sem.</span></div>
+        <div class="stat"><span class="label">Prévues</span><span class="big" style="color:var(--river)">17 sem.</span></div>
+        <div class="stat"><span class="label">Exigées</span><span class="big" style="color:var(--muted)">17 sem.</span></div>
+      </div>
+      <div class="meter" role="img" aria-label="0 semaine réalisée sur 17, 17 semaines prévues"><i style="width:100%;background:var(--river);opacity:.6"></i></div>
+      <div class="legend"><span style="--c:var(--leaf)">Réalisées</span><span style="--c:var(--river)">Prévu : stage chez Jiro Kanto, 2027</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head"><h3>Feuille de route de mobilité</h3></div>
+    <div class="ctl">
+      <div class="ctl-item left future"><div class="ctl-text"><span class="when">Option · en discussion</span><h4>Année de césure : Laponie ou ONG de conservation</h4><p>Une seule destination, pour limiter l'empreinte carbone : une ferme d'élevage de rennes en Laponie, ou un projet de protection d'espèces menacées dans l'Himalaya ou en forêt tropicale.</p></div><span class="ctl-dot" aria-hidden="true"></span><div class="ctl-photo empty"></div></div>
+      <div class="ctl-item right future"><div class="ctl-text"><span class="when">2027 · 17 semaines · prévu</span><h4>Madagascar · stage chez Jiro Kanto</h4><p>Électrification rurale par petite hydroélectricité autour du lac Alaotra. Compétences visées : travail en équipe internationale, adaptation au terrain, pratique professionnelle du français et de l'anglais.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/barrage-madagascar.jpg" alt="Petit barrage hydroélectrique à Madagascar" loading="lazy"><figcaption>Petite centrale hydroélectrique à Madagascar · photo : ministère de l'Énergie de Madagascar</figcaption></figure></div>
+      <div class="ctl-item left now"><div class="ctl-text"><span class="when">2025–2027</span><h4>ENSEEIHT, Toulouse</h4><p>Cours d'anglais (B2) et d'espagnol, préparation du stage.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/enseeiht.jpg" alt="Le bâtiment de l'ENSEEIHT au bord du canal du Midi, à Toulouse" loading="lazy"><figcaption>L'ENSEEIHT au bord du canal, Toulouse · photo : ENSEEIHT</figcaption></figure></div>
+      <div class="ctl-item right "><div class="ctl-text"><span class="when">2022 · avant l'ENSEEIHT</span><h4>République du Congo · mission de suivi des gorilles</h4><p>Mission de terrain bénévole avec Endangered Species International, dans la région de Kakamoéka.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/congo-1.jpg" alt="Village entouré de forêt tropicale, vu du ciel, République du Congo" loading="lazy"></figure></div>
+      <div class="ctl-item left "><div class="ctl-text"><span class="when">2019 · avant l'ENSEEIHT</span><h4>Ontario, Canada · échange scolaire de 3 mois</h4><p>Famille d'accueil et lycée local : une immersion qui a nettement amélioré mon anglais.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/canada.jpg" alt="Rue du centre-ville de Guelph, Ontario" loading="lazy"></figure></div>
+      <div class="ctl-item right "><div class="ctl-text"><span class="when">2019 · avant l'ENSEEIHT</span><h4>Birmanie · voyage de découverte</h4><p>Un pays très accueillant, visité avant le coup d'État de 2021.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/myanmar.jpg" alt="Temples en briques au milieu de la forêt" loading="lazy"></figure></div>
+      <div class="ctl-item left "><div class="ctl-text"><span class="when">2017 · avant l'ENSEEIHT</span><h4>Vietnam · premier voyage en Asie</h4><p>Ma première découverte d'une culture et d'un mode de vie très différents des miens.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/vietnam.jpg" alt="Marchande ambulante à moto dans une rue du Vietnam" loading="lazy"></figure></div>
+      <div class="ctl-item right "><div class="ctl-text"><span class="when">2017 · avant l'ENSEEIHT</span><h4>Allemagne · échange scolaire de 2 mois</h4><p>Famille d'accueil et école locale. J'étais jeune et l'adaptation a parfois été difficile, mais l'expérience m'a beaucoup apporté.</p></div><span class="ctl-dot" aria-hidden="true"></span><figure class="ctl-photo"><img src="photos/allemagne.jpg" alt="École Gesamtschule Heiligenhaus, Allemagne" loading="lazy"></figure></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head"><h3>Bilan carbone</h3></div>
+    <div class="card carbon">
+      <div class="stat">
+        <span class="label">Estimation · aller-retour pour Madagascar</span>
+        <span class="big">≈ 2,8 t CO₂e</span>
+        <p style="color:var(--muted)">Sous le plafond de 6 t fixé par l'ENSEEIHT, en faisant les trajets Toulouse–Paris en train. En avion, ces trajets ajouteraient environ 0,3 t.</p>
+      </div>
+      <div class="formula">Paris CDG ⇄ Antananarivo : 2 × 8 750 km
+Facteur long-courrier (ADEME Base Empreinte, traînées incluses) : 0,16 kg CO₂e/km
+Calcul : 2 × 8 750 × 0,16 = 2 800 kg CO₂e ≈ 2,8 t CO₂e</div>
+    </div>
+    <p class="label">Méthode : <a href="https://nosgestesclimat.fr/documentation/transport/avion/moyen-et-long-courrier/empreinte-par-km/long-courrier" target="_blank" rel="noopener">ADEME Base Empreinte via Nos Gestes Climat</a> · <a href="https://agirpourlatransition.ademe.fr/particuliers/bureau/deplacements/calculer-emissions-carbone-trajets" target="_blank" rel="noopener">calculateur de l'ADEME</a></p>
+  </section>
+
+  <section class="block">
+    <div class="block-head"><h3>Langues</h3></div>
+    <div class="grid2">
+      <div class="card"><div class="meta"><h4>Français</h4><span class="label">Langue maternelle</span></div></div>
+      <div class="card"><div class="meta"><h4>Anglais</h4><span class="label">B2</span></div></div>
+      <div class="card"><div class="meta"><h4>Espagnol</h4><span class="label">Intermédiaire</span></div></div>
+      <div class="card"><div class="meta"><h4>Allemand</h4><span class="label">Notions</span></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SUSTAINABILITY ============ -->
+<div class="view" id="sustainability" data-title="Sustainability &amp; Civic Engagement" hidden>
+  <div class="view-head">
+    <p class="kicker">Exigence ENSEEIHT · 40 heures d'engagement citoyen</p>
+    <h2>Sustainability &amp; Civic Engagement</h2>
+    <p class="lead">Mes engagements portent surtout sur la protection de la nature et de la faune sauvage, avec aussi une action humanitaire menée en famille.</p>
+  </div>
+
+  <section class="block">
+    <div class="block-head"><h3>Heures d'engagement pendant mes études</h3></div>
+    <div class="card tracker">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--s6);align-items:end">
+        <div class="stat"><span class="label">Réalisées · 2025–2026</span><span class="big" style="color:var(--leaf)">≈ 20 h</span></div>
+        <div class="stat"><span class="label">Exigées</span><span class="big" style="color:var(--muted)">40 h</span></div>
+      </div>
+      <div class="meter" role="img" aria-label="Environ 20 heures réalisées sur 40"><i style="width:50%;background:var(--leaf)"></i></div>
+      <div class="legend"><span style="--c:var(--leaf)">Suivi des populations d'oiseaux avec la LPO, en cours cette année</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head"><h3>Mes engagements et les Objectifs de développement durable</h3></div>
+    <div class="eng-list">
+      <article class="card eng">
+        <div class="body">
+        <div class="meta"><span class="label">LPO Hérault · depuis 2016</span><span class="chip talk">En cours</span></div>
+        <h4>Suivi des populations d'oiseaux</h4>
+        <p>Comptages participatifs d'espèces protégées : suivi d'une population locale de pies-grièches pendant quatre ans, dont les données ont servi au Muséum national d'histoire naturelle, et trois ans de comptage de l'outarde canepetière près de l'aéroport de Béziers.</p>
+        <div class="sdg"><span>ODD 15 · Vie terrestre</span><span>ODD 13 · Lutte contre le changement climatique</span></div>
+      </div>
+        <div class="media logo"><img src="photos/logo-lpo.jpg" alt="Logo de la LPO"></div>
+      </article>
+      <article class="card eng tall">
+        <div class="body">
+        <div class="meta"><span class="label">ESI · République du Congo · 2022</span><span class="chip done">Terminé</span></div>
+        <h4>Mission de suivi des gorilles</h4>
+        <p>Étude d'un groupe de gorilles des plaines de l'Ouest dans la forêt secondaire de Kakamoéka : cartographie de leur habitat pour limiter les conflits avec les habitants, observation de leur comportement et de leur régime alimentaire, afin de mieux protéger leur milieu.</p>
+        <div class="sdg"><span>ODD 15 · Vie terrestre</span></div>
+      </div>
+        <div class="media"><img src="photos/congo-2.jpg" alt="Progression en forêt tropicale lors de la mission ESI au Congo" style="object-position:50% 55%"></div>
+      </article>
+      <article class="card eng">
+        <div class="body">
+        <div class="meta"><span class="label">Initiative familiale</span><span class="chip done">Terminé</span></div>
+        <h4>Collecte de vêtements pour des orphelinats africains</h4>
+        <p>Avec ma famille, nous avons collecté, trié et envoyé des vêtements à des orphelinats que mon père visite lors de ses missions en Afrique. Je l'ai accompagné lors de certains de ces voyages.</p>
+        <div class="sdg"><span>ODD 1 · Pas de pauvreté</span><span>ODD 10 · Inégalités réduites</span></div>
+      </div>
+        <div class="media"><img src="photos/burundi-recadre.jpg" alt="Enfants sur une piste au Burundi"></div>
+      </article>
+    </div>
+    <p class="label">Compétences développées : rigueur dans la collecte de données · patience sur le terrain · travail avec des bénévoles et des scientifiques · adaptation à d'autres cultures</p>
+  </section>
+</div>
+
+<!-- ============ SPORT ============ -->
+<div class="view" id="sport-activities" data-title="Sport &amp; Activities" hidden>
+  <div class="view-head">
+    <p class="kicker">En dehors des cours</p>
+    <h2>Sport &amp; Activities</h2>
+    <p class="lead">Mes activités en disent beaucoup sur moi : la plupart se pratiquent dehors.</p>
+  </div>
+  <div class="sport-list">
+    <article class="card sport framed">
+      <img class="side" loading="lazy" src="photos/carlit.jpg" alt="Vue depuis le sommet du Carlit, Pyrénées">
+      <div class="body">
+      <span class="badge">Membre de 7Rando</span>
+      <h4>Montagne</h4>
+      <p>Ski et ski de randonnée l'hiver, randonnée l'été, et je débute l'alpinisme avec un ami. Ce goût me vient de ma grand-mère, qui vit dans les Pyrénées et m'a emmené en montagne dès l'enfance.</p>
+      </div>
+      <img class="side" loading="lazy" src="photos/montagne-aube.jpg" alt="Guilhem à l'aube en montagne">
+    </article>
+    <article class="card sport framed">
+      <img class="side" loading="lazy" src="photos/pie-grieche-zoom.jpg" alt="Pie-grièche à tête rousse perchée sur un buisson">
+      <div class="body">
+      <span class="badge">Membre de Photo7</span>
+      <h4>Photographie animalière</h4>
+      <p>Les oiseaux me fascinent depuis l'enfance. J'ai commencé avec l'appareil de mon père, je me suis acheté le mien à 18 ans et je n'ai plus arrêté. <a href="#portfolio">Voir mes photos</a>.</p>
+      </div>
+      <img class="side" loading="lazy" src="photos/photographe.jpg" alt="Guilhem avec son appareil photo et son téléobjectif" style="object-position:70% 50%">
+    </article>
+    <article class="card sport framed">
+      <img class="side" loading="lazy" src="photos/voile-selfie.jpg" alt="Guilhem en mer au lever du soleil">
+      <div class="body">
+      <span class="badge">Catamaran et planche à voile niveau 3 · Équitation galop 5</span>
+      <h4>Voile et équitation</h4>
+      <p>J'ai longtemps fait de l'équitation et j'ai appris la voile enfant. Je ne les pratique plus en ce moment, mais elles m'ont donné le goût du plein air.</p>
+      </div>
+      <img class="side" loading="lazy" src="photos/voile-bateau.jpg" alt="Navigation à bord d'un voilier de l'École française de croisière" style="object-position:45% 50%">
+    </article>
+    <article class="card sport framed">
+      <img class="side" loading="lazy" src="photos/batterie.jpg" alt="Guilhem à la batterie lors d'un concert" style="object-position:62% 40%">
+      <div class="body">
+      <span class="badge">Membre du Club Zik N7</span>
+      <h4>Batterie</h4>
+      <p>Je joue de la batterie depuis mes 7 ans, et je joue notamment dans un groupe du club de musique de l'ENSEEIHT.</p>
+      </div>
+      <img class="side logo" loading="lazy" src="photos/logo-clubzik.png" alt="Logo du Club Zik N7">
+    </article>
+  </div>
+</div>
+
+<!-- ============ PORTFOLIO ============ -->
+<div class="view" id="portfolio" data-title="Portfolio" hidden>
+  <div class="view-head">
+    <p class="kicker">Photographie animalière et de voyage</p>
+    <h2>Portfolio</h2>
+    <p class="lead">Une sélection de mes photographies animalières, surtout des oiseaux, prises en France et lors de mes voyages.</p>
+  </div>
+  <div class="filters" id="filters" role="group" aria-label="Filtrer les photos"></div>
+  <div class="gallery" id="gallery"></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Guilhem Chancelier · ENSEEIHT, Toulouse INP</span>
+    <a href="https://www.linkedin.com/in/guilhem-chancelier-279417383" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Photos : { src:"photos/fichier.jpg", title:"Espèce ou lieu", place:"Lieu", year:"2025", cat:"Oiseaux" } */
+  var PHOTOS = [
+    { src:"photos/portfolio/canard-mandarin.jpg", title:"Canard mandarin", sci:"Aix galericulata", cat:"Oiseaux" },
+    { src:"photos/portfolio/martin-pecheur-pie.jpg", title:"Martin-pêcheur pie", sci:"Ceryle rudis", cat:"Oiseaux" },
+    { src:"photos/portfolio/tyran-melancolique.jpg", title:"Tyran mélancolique", sci:"Tyrannus melancholicus", cat:"Oiseaux" },
+    { src:"photos/portfolio/babouin.jpg", title:"Babouin olive", sci:"Papio anubis", cat:"Mammifères" },
+    { src:"photos/portfolio/saimiri.jpg", title:"Saïmiri", sci:"Saimiri sciureus", cat:"Mammifères" },
+    { src:"photos/portfolio/iguane.jpg", title:"Iguane vert", sci:"Iguana iguana", cat:"Reptiles et amphibiens" },
+    { src:"photos/portfolio/rollier.jpg", title:"Rollier d'Europe", sci:"Coracias garrulus", cat:"Oiseaux" },
+    { src:"photos/portfolio/martin-chasseur-senegal.jpg", title:"Martin-chasseur du Sénégal", sci:"Halcyon senegalensis", cat:"Oiseaux" },
+    { src:"photos/portfolio/limicole-silhouette.jpg", title:"Chevalier guignette", sci:"Actitis hypoleucos", cat:"Oiseaux" },
+    { src:"photos/portfolio/cobe-defassa.jpg", title:"Cobe defassa", sci:"Kobus ellipsiprymnus defassa", cat:"Mammifères" },
+    { src:"photos/portfolio/tangara-noir.jpg", title:"Tangara à galons blancs", sci:"Tachyphonus rufus", cat:"Oiseaux" },
+    { src:"photos/portfolio/tortue-1.jpg", title:"Tortue verte (nouveau-né)", sci:"Chelonia mydas", cat:"Reptiles et amphibiens" },
+    { src:"photos/portfolio/ibis-rouge.jpg", title:"Ibis rouge", sci:"Eudocimus ruber", cat:"Oiseaux" },
+    { src:"photos/portfolio/saimiris.jpg", title:"Saïmiris", sci:"Saimiri sciureus", cat:"Mammifères" },
+    { src:"photos/portfolio/sapajou.jpg", title:"Sapajou brun", sci:"Sapajus apella", cat:"Mammifères" },
+    { src:"photos/portfolio/mygale.jpg", title:"Théraphose de Leblond", sci:"Theraphosa blondi", cat:"Arachnides" },
+    { src:"photos/portfolio/pic-chevron-or.jpg", title:"Pic à chevron d'or", sci:"Melanerpes cruentatus", cat:"Oiseaux" },
+    { src:"photos/portfolio/colobe.jpg", title:"Colobe bai", sci:"Piliocolobus sp.", cat:"Mammifères" },
+    { src:"photos/portfolio/silhouette-branche.jpg", title:"Pie-grièche à tête rousse", sci:"Lanius senator", cat:"Oiseaux" },
+    { src:"photos/portfolio/caiman-2.jpg", title:"Caïman à lunettes (juvénile)", sci:"Caiman crocodilus", cat:"Reptiles et amphibiens" },
+    { src:"photos/portfolio/coq-de-roche-femelle.jpg", title:"Coq-de-roche orange (femelle)", sci:"Rupicola rupicola", cat:"Oiseaux" },
+    { src:"photos/portfolio/agouti.jpg", title:"Agouti doré", sci:"Dasyprocta leporina", cat:"Mammifères" },
+    { src:"photos/portfolio/caiman.jpg", title:"Caïman à lunettes", sci:"Caiman crocodilus", cat:"Reptiles et amphibiens" },
+    { src:"photos/portfolio/tortue-2.jpg", title:"Tortue verte (nouveau-né)", sci:"Chelonia mydas", cat:"Reptiles et amphibiens" },
+    { src:"photos/portfolio/fregate.jpg", title:"Frégate superbe", sci:"Fregata magnificens", cat:"Oiseaux" },
+    { src:"photos/portfolio/singe-arbre.jpg", title:"Atèle et hurleur roux", sci:"Ateles sp. · Alouatta sp.", cat:"Mammifères" },
+    { src:"photos/portfolio/bulbul.jpg", title:"Bulbul des jardins", sci:"Pycnonotus barbatus", cat:"Oiseaux" },
+    { src:"photos/portfolio/oies-coucher.jpg", title:"Oies cendrées", sci:"Anser anser", cat:"Oiseaux" },
+    { src:"photos/portfolio/astrild.jpg", title:"Astrild nonnette", sci:"Estrilda nonnula", cat:"Oiseaux" },
+    { src:"photos/portfolio/grenouille.jpg", title:"Grenouille verte", sci:"Pelophylax sp.", cat:"Reptiles et amphibiens" },
+    { src:"photos/portfolio/traquet.jpg", title:"Traquet d'Arnott", sci:"Myrmecocichla arnotti", cat:"Oiseaux" },
+    { src:"photos/portfolio/choucador.jpg", title:"Choucador de Rüppell", sci:"Lamprotornis purpuroptera", cat:"Oiseaux" }
+  ];
+
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.main a'));
+  var nav = document.getElementById('nav'), menuBtn = document.getElementById('menu-btn');
+
+  function show(hash){
+    var id = (hash || '').replace('#','');
+    var target = document.getElementById(id);
+    var view = target ? (target.classList.contains('view') ? target : target.closest('.view')) : null;
+    if(!view) view = document.getElementById('home');
+    views.forEach(function(v){ v.hidden = (v !== view); });
+    links.forEach(function(a){ if(a.dataset.view === view.id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+    if(target && target !== view){ target.scrollIntoView(); } else { window.scrollTo(0,0); }
+  }
+  window.addEventListener('hashchange', function(){ show(location.hash); });
+  menuBtn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function(e){
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !menuBtn.contains(e.target)){
+      nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+    }
+  });
+  show(location.hash);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el = document.getElementById(b.dataset.copy), txt = el.textContent;
+      var done = function(){ b.textContent = 'Copié'; setTimeout(function(){ b.textContent = 'Copier'; }, 1500); };
+      try {
+        navigator.clipboard.writeText(txt).then(done, function(){ selectText(el); });
+      } catch(e){ selectText(el); }
+    });
+  });
+  function selectText(el){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  var gallery = document.getElementById('gallery'), filters = document.getElementById('filters');
+  var cats = ['Tout'].concat(PHOTOS.map(function(p){return p.cat;}).filter(function(c,i,a){return c && a.indexOf(c)===i;}));
+  var current = 'Tout';
+  function renderGallery(){
+    gallery.innerHTML = '';
+    PHOTOS.filter(function(p){ return current==='Tout' || p.cat===current; }).forEach(function(p){
+      var fig = document.createElement('figure'); fig.className = 'shot';
+      var frame = document.createElement('div'); frame.className = 'frame';
+      if(p.src){
+        var img = document.createElement('img'); img.src = p.src; img.alt = p.sci ? p.title + ' (' + p.sci + ')' : 'Photographie animalière'; img.loading = 'lazy';
+        frame.appendChild(img);
+      } else {
+        frame.textContent = 'Photo à venir';
+      }
+      var cap = document.createElement('figcaption');
+      var t = document.createElement('b'); t.textContent = p.title;
+      var m = document.createElement('i'); m.className = 'sci'; m.textContent = p.sci || '';
+      cap.appendChild(t); cap.appendChild(m);
+      fig.appendChild(frame); fig.appendChild(cap); gallery.appendChild(fig);
+    });
+  }
+  cats.forEach(function(c){
+    var b = document.createElement('button'); b.type='button'; b.textContent = c; b.setAttribute('aria-pressed', c===current ? 'true':'false');
+    b.addEventListener('click', function(){ current = c; filters.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); }); renderGallery(); });
+    filters.appendChild(b);
+  });
+  renderGallery();
+})();
+</script>
